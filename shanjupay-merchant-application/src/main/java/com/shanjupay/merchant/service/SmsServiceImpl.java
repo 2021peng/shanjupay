@@ -1,13 +1,11 @@
-package com.shanjupay.merchant;
+package com.shanjupay.merchant.service;
 
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
@@ -15,35 +13,35 @@ import java.util.Map;
 
 /**
  * @BelongsProject: shanjupay
- * @BelongsPackage: com.shanjupay.merchant
- * @Classname: RestTemplateTest
+ * @BelongsPackage: com.shanjupay.merchant.service
+ * @Classname: SmsServiceImpl
  * @Author: admin
- * @Date: 2022/12/9 11:12
+ * @Date: 2022/12/9 14:26
  * @Description:
  */
-
-@SpringBootTest
-@RunWith(SpringRunner.class)
 @Slf4j
-public class RestTemplateTest {
+@Service
+public class SmsServiceImpl implements SmsService{
+
+    @Value("${sms.url}")
+    private String smsUrl;
+
+    @Value("${sms.effectiveTime}")
+    private String effectiveTime;
 
     @Autowired
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
+    /**
+     * @date: 2022/12/9 14:31
+     * @description: 获取短信验证码
+     * @Param phone:  
+     * @return: java.lang.String
+     */
+    @Override
+    public String sendMsg(String phone) {
+        String url = smsUrl + "/generate?name=sms&effectiveTime=" + effectiveTime;
+        //验证码过期时间为600秒 10分钟
 
-    //获取网页内容
-    @Test
-    public void gethtml(){
-        String url = "http://www.baidu.com/";
-        ResponseEntity<String> forEntity = restTemplate.getForEntity(url, String.class);
-        String body = forEntity.getBody();
-        System.out.println(body);
-    }
-
-    //获取验证码测试方法
-    @Test
-    public void testSmsCode(){
-        String url = "http://localhost:56085/sailing/generate?effectiveTime=600&name=sms";
-        String phone = "12345678901";
         log.info("调用短信微服务发送验证码：url:{}",url);
 
         //请求体
@@ -66,13 +64,18 @@ public class RestTemplateTest {
             responseMap = exchange.getBody();
         }catch (Exception e){
             log.info(e.getMessage(),e);
+            e.printStackTrace();
+            throw new RuntimeException("发送验证码失败！！！");
         }
 
-        //取出body中的result数据
-        if (responseMap != null || responseMap.get("result") != null) {
-            Map resultMap = (Map) responseMap.get("result");
-            String value = resultMap.get("key").toString();
-            System.out.println(value);
+        if (responseMap == null || responseMap.get("result") == null) {
+            throw new RuntimeException("发送验证码失败！！！");
         }
+
+        Map resultMap = (Map) responseMap.get("result");
+        String key = resultMap.get("key").toString();
+        log.info("得到发送验证码对应的的key：{}",key);
+        return key;
+
     }
 }
