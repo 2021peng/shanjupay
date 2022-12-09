@@ -1,8 +1,8 @@
-
-
 package com.shanjupay.common.domain;
 
-
+/**
+ * @description:自定义的异常类型
+ */
 
 public class BusinessException extends RuntimeException {
 
@@ -63,5 +63,6 @@ public class BusinessException extends RuntimeException {
 	public void setErrorCode(ErrorCode errorCode) {
 		this.errorCode = errorCode;
 	}
-	
+
+
 }

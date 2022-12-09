@@ -1,5 +1,7 @@
 package com.shanjupay.merchant.service;
 
+import com.shanjupay.common.domain.BusinessException;
+
 /**
  * @BelongsProject: shanjupay
  * @BelongsPackage: com.shanjupay.merchant.service
@@ -23,5 +25,5 @@ public interface SmsService {
      * @param verifiyKey 验证码key
      * @param verifiyCode 验证码
      */
-    void checkVerifiyCode(String verifiyKey,String verifiyCode) ;
+    void checkVerifiyCode(String verifiyKey,String verifiyCode) throws BusinessException;
 }

@@ -69,6 +69,8 @@ public class MerchantController {
     @PostMapping("/merchants/register")
     public MerchantRegisterVO registerMerchant(@RequestBody MerchantRegisterVO merchantRegister)
     {
+        //测试系统异常
+//        int i = 1/0;
         //校验验证码
         smsService.checkVerifiyCode(merchantRegister.getVerifiykey(),
                 merchantRegister.getVerifiyCode());
