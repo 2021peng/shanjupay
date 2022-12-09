@@ -2,6 +2,7 @@ package com.shanjupay.merchant.service;
 
 import com.shanjupay.merchant.api.MerchantService;
 import com.shanjupay.merchant.api.dto.MerchantDTO;
+import com.shanjupay.merchant.convert.MerchantCovert;
 import com.shanjupay.merchant.entity.Merchant;
 import com.shanjupay.merchant.mapper.MerchantMapper;
 import org.apache.dubbo.config.annotation.Service;
@@ -37,17 +38,21 @@ public class MerchantServiceImpl implements MerchantService {
     @Override
     @Transactional
     public MerchantDTO createMerchant(MerchantDTO merchantDTO) {
-        Merchant merchant = new Merchant();
+//        Merchant merchant = new Merchant();
         //写入属性
+//        merchant.setMobile(merchantDTO.getMobile());
+
+        //使用MapStruct进行对象转换，将dto装成entity
+        Merchant merchant = MerchantCovert.INSTANCE.dto2entity(merchantDTO);
+
         //设置审核状态0‐未申请,1‐已申请待审核,2‐审核通过,3‐审核拒绝
         merchant.setAuditStatus("0");
-        merchant.setMobile(merchantDTO.getMobile());
 
         //调用mapper向数据库写入记录
         merchantMapper.insert(merchant);
         //将dto中写入新增商户的id
-        merchantDTO.setId(merchant.getId());
-
-        return merchantDTO;
+//        merchantDTO.setId(merchant.getId());
+        //将entity转成 dto
+        return MerchantCovert.INSTANCE.entity2dto(merchant);
     }
 }

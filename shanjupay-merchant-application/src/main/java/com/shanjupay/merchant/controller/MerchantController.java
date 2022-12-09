@@ -2,6 +2,7 @@ package com.shanjupay.merchant.controller;
 
 import com.shanjupay.merchant.api.MerchantService;
 import com.shanjupay.merchant.api.dto.MerchantDTO;
+import com.shanjupay.merchant.convert.MerchantRegisterConvert;
 import com.shanjupay.merchant.service.SmsService;
 import com.shanjupay.merchant.vo.MerchantRegisterVO;
 import io.swagger.annotations.Api;
@@ -72,11 +73,13 @@ public class MerchantController {
         smsService.checkVerifiyCode(merchantRegister.getVerifiykey(),
                 merchantRegister.getVerifiyCode());
         //调用Dubbo接口，注册商户
-        MerchantDTO merchantDTO = new MerchantDTO();
+//        MerchantDTO merchantDTO = new MerchantDTO();
         //向dto写入商户注册的信息
-        merchantDTO.setUsername(merchantRegister.getUsername());
-        merchantDTO.setMobile(merchantRegister.getMobile());
-//        merchantDTO.setPassword(merchantRegister.getPassword());
+//        merchantDTO.setUsername(merchantRegister.getUsername());
+//        merchantDTO.setMobile(merchantRegister.getMobile());
+
+        //使用MapStruct转换对象
+        MerchantDTO merchantDTO = MerchantRegisterConvert.INSTANCE.vo2dto(merchantRegister);
         merchantService.createMerchant(merchantDTO);
         return merchantRegister;
     }
