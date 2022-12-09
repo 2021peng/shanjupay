@@ -32,8 +32,8 @@ public class SmsServiceImpl implements SmsService{
     @Autowired
     private RestTemplate restTemplate;
     /**
-     * @date: 2022/12/9 14:31
      * @description: 获取短信验证码
+     * @date: 2022/12/9 14:31
      * @Param phone:  
      * @return: java.lang.String
      */
@@ -77,5 +77,28 @@ public class SmsServiceImpl implements SmsService{
         log.info("得到发送验证码对应的的key：{}",key);
         return key;
 
+    }
+
+    @Override
+    public void checkVerifiyCode(String verifiyKey, String verifiyCode) {
+        String url = smsUrl+"/verify?name=sms&verificationCode="+verifiyCode+"&verificationKey="+verifiyKey;
+
+        Map responseMap = null;
+
+        try {
+            //请求校验验证码
+            ResponseEntity<Map> exchange = restTemplate.exchange(url, HttpMethod.POST, HttpEntity.EMPTY, Map.class);
+            log.info("校验验证码，响应内容：{} ", JSON.toJSONString(exchange));
+            //获取响应
+            responseMap = exchange.getBody();
+        }catch (Exception e){
+            log.info(e.getMessage(),e);
+            e.printStackTrace();
+            throw new RuntimeException("校验验证码失败！！！");
+        }
+        if(responseMap == null || responseMap.get("result")==null ||
+                !(Boolean) responseMap.get("result")){
+            throw new RuntimeException("校验验证码失败！！！");
+        }
     }
 }

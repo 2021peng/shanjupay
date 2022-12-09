@@ -17,4 +17,11 @@ public interface SmsService {
      * @return
      */
     String sendMsg(String phone);
+
+    /**
+     * 校验验证码，抛出异常则校验无效
+     * @param verifiyKey 验证码key
+     * @param verifiyCode 验证码
+     */
+    void checkVerifiyCode(String verifiyKey,String verifiyCode) ;
 }
