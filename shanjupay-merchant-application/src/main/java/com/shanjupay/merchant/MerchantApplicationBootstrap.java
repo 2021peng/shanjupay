@@ -23,7 +23,7 @@ import java.util.List;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class  MerchantApplicationBootstrap {
+public class MerchantApplicationBootstrap {
     public static void main(String[] args) {
         SpringApplication.run(MerchantApplicationBootstrap.class,args);
     }

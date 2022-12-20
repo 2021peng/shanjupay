@@ -6,15 +6,22 @@ import com.shanjupay.common.util.PhoneUtil;
 import com.shanjupay.merchant.api.MerchantService;
 import com.shanjupay.merchant.api.dto.MerchantDTO;
 import com.shanjupay.merchant.convert.MerchantRegisterConvert;
+import com.shanjupay.merchant.service.FileService;
 import com.shanjupay.merchant.service.SmsService;
 import com.shanjupay.merchant.vo.MerchantRegisterVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.sql.BatchUpdateException;
+import java.util.UUID;
 
 /**
  * @BelongsProject: shanjupay
@@ -34,6 +41,9 @@ public class MerchantController {
 
     @Autowired //将本地的bean注入进来
     SmsService smsService;
+
+    @Autowired
+    private FileService fileService;
 
     @ApiOperation(value = "根据id查询商户")
     @GetMapping("/merchants/{id}")
@@ -101,5 +111,22 @@ public class MerchantController {
         MerchantDTO merchantDTO = MerchantRegisterConvert.INSTANCE.vo2dto(merchantRegister);
         merchantService.createMerchant(merchantDTO);
         return merchantRegister;
+    }
+
+    //上传证件照
+    @ApiOperation("证件上传")
+    @PostMapping("/upload")
+    public String upload(@ApiParam(value = "证件照", required = true)
+                         @RequestParam("file")
+                         MultipartFile multipartFile) throws IOException, BatchUpdateException {
+        //调用fileService上传文件
+        //原始文件名称
+        String originalFilename = multipartFile.getOriginalFilename();
+        //文件后缀
+        String suffix = originalFilename.substring(originalFilename.lastIndexOf(".")-1);
+        //文件名称
+        String fileName = UUID.randomUUID().toString()+suffix;
+        //上传文件，返回文件下载url
+        return fileService.upload(multipartFile.getBytes(),fileName);
     }
 }
