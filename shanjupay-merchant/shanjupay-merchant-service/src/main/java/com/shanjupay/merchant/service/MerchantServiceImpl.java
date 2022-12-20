@@ -90,4 +90,33 @@ public class MerchantServiceImpl implements MerchantService {
         //将entity转成 dto
         return MerchantCovert.INSTANCE.entity2dto(merchant);
     }
+
+    /**
+     * 资质申请
+     * @param merchantId 商户id
+     * @param merchantDTO 资质申请信息
+     * @throws BusinessException
+     */
+    @Override
+    public void applyMerchant(Long merchantId, MerchantDTO merchantDTO) throws BusinessException {
+        //接收资质申请信息，更新到商户表
+        if(merchantDTO == null || merchantId == null){
+            throw new BusinessException(CommonErrorCode.E_100108);
+        }
+        //根据id查询商户，校验merchantId的合法性
+        Merchant merchant = merchantMapper.selectById(merchantId);
+        if(merchant == null){
+            throw new BusinessException(CommonErrorCode.E_200002);
+        }
+        //将dto转换为entity
+        Merchant entity = MerchantCovert.INSTANCE.dto2entity(merchantDTO);
+        //将必要的参数设置到entity
+        entity.setId(merchant.getId());
+        entity.setMobile(merchant.getMobile());//因为资质申请的时候手机号不让改，所以还是使用数据库中的手机号
+        entity.setAuditStatus("1");//已申请待审核
+        entity.setTenantId(merchant.getTenantId());
+
+        //更新商户列表
+        merchantMapper.updateById(entity);
+    }
 }

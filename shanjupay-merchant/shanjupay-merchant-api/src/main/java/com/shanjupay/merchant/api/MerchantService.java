@@ -27,4 +27,12 @@ public interface MerchantService {
      * @return: com.shanjupay.merchant.api.dto.MerchantDTO 注册成功的商户信息
      */
     MerchantDTO createMerchant(MerchantDTO merchantDTO) throws BusinessException;
+
+    /**
+     * 资质申请
+     * @param merchantId 商户id
+     * @param merchantDTO 资质申请信息
+     * @throws BusinessException
+     */
+    public void applyMerchant(Long merchantId,MerchantDTO merchantDTO) throws BusinessException;
 }

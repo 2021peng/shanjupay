@@ -5,14 +5,14 @@ import com.shanjupay.common.domain.CommonErrorCode;
 import com.shanjupay.common.util.PhoneUtil;
 import com.shanjupay.merchant.api.MerchantService;
 import com.shanjupay.merchant.api.dto.MerchantDTO;
+import com.shanjupay.merchant.common.util.SecurityUtil;
+import com.shanjupay.merchant.convert.MerchantDetailConvert;
 import com.shanjupay.merchant.convert.MerchantRegisterConvert;
 import com.shanjupay.merchant.service.FileService;
 import com.shanjupay.merchant.service.SmsService;
+import com.shanjupay.merchant.vo.MerchantDetailVO;
 import com.shanjupay.merchant.vo.MerchantRegisterVO;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.*;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -129,4 +129,19 @@ public class MerchantController {
         //上传文件，返回文件下载url
         return fileService.upload(multipartFile.getBytes(),fileName);
     }
+
+    @ApiOperation("商户资质申请")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "merchantInfo", value = "商户认证资料", required = true, dataType = "MerchantDetailVO", paramType = "body")
+    })
+    @PostMapping("/my/merchants/save")
+    public void saveMerchant(@RequestBody MerchantDetailVO merchantInfo) {
+        //解析token得到商户id
+        Long merchantId = SecurityUtil.getMerchantId();
+        System.out.println(merchantId);
+        MerchantDTO merchantDTO = MerchantDetailConvert.INSTANCE.vo2dto(merchantInfo);
+        merchantService.applyMerchant(merchantId,merchantDTO);
+
+    }
+
 }
