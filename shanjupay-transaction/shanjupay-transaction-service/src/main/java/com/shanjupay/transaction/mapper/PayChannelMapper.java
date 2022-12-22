@@ -1,7 +1,9 @@
 package com.shanjupay.transaction.mapper;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.shanjupay.transaction.entity.PayChannel;
+import com.shanjupay.transaction.entity.PayChannelParam;
 import org.springframework.stereotype.Repository;
 
 /**

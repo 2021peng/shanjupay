@@ -1,6 +1,6 @@
-[${project.name}][${env:SERVER_PORT}] 2022-12-22 15:09:54,801 ERROR [com.alibaba.nacos.client.Worker.longPolling.fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791][ServerHttpAgent.java:151] - [NACOS SocketTimeoutException httpPost] currentServerAddr: http://127.0.0.1:8848， err : Read timed out
-[${project.name}][${env:SERVER_PORT}] 2022-12-22 15:09:54,824 ERROR [com.alibaba.nacos.client.Worker.longPolling.fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791][ServerHttpAgent.java:169] - no available server, currentServerAddr : http://127.0.0.1:8848
-[${project.name}][${env:SERVER_PORT}] 2022-12-22 15:09:54,837 ERROR [com.alibaba.nacos.client.Worker.longPolling.fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791][ClientWorker.java:389] - [fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791] [check-update] get changed dataId exception
+[${project.name}][${env:SERVER_PORT}] 2022-12-22 19:54:50,342 ERROR [com.alibaba.nacos.client.Worker.longPolling.fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791][ServerHttpAgent.java:151] - [NACOS SocketTimeoutException httpPost] currentServerAddr: http://127.0.0.1:8848， err : Read timed out
+[${project.name}][${env:SERVER_PORT}] 2022-12-22 19:54:50,407 ERROR [com.alibaba.nacos.client.Worker.longPolling.fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791][ServerHttpAgent.java:169] - no available server, currentServerAddr : http://127.0.0.1:8848
+[${project.name}][${env:SERVER_PORT}] 2022-12-22 19:54:50,420 ERROR [com.alibaba.nacos.client.Worker.longPolling.fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791][ClientWorker.java:389] - [fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791] [check-update] get changed dataId exception
 java.net.ConnectException: no available server, currentServerAddr : http://127.0.0.1:8848
 	at com.alibaba.nacos.client.config.http.ServerHttpAgent.httpPost(ServerHttpAgent.java:170)
 	at com.alibaba.nacos.client.config.http.MetricsHttpAgent.httpPost(MetricsHttpAgent.java:64)
@@ -14,7 +14,7 @@ java.net.ConnectException: no available server, currentServerAddr : http://127.0
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
 	at java.lang.Thread.run(Thread.java:748)
-[${project.name}][${env:SERVER_PORT}] 2022-12-22 15:09:56,662 ERROR [com.alibaba.nacos.client.Worker.longPolling.fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791][ClientWorker.java:550] - longPolling error : 
+[${project.name}][${env:SERVER_PORT}] 2022-12-22 19:54:50,744 ERROR [com.alibaba.nacos.client.Worker.longPolling.fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791][ClientWorker.java:550] - longPolling error : 
 java.net.ConnectException: no available server, currentServerAddr : http://127.0.0.1:8848
 	at com.alibaba.nacos.client.config.http.ServerHttpAgent.httpPost(ServerHttpAgent.java:170)
 	at com.alibaba.nacos.client.config.http.MetricsHttpAgent.httpPost(MetricsHttpAgent.java:64)
@@ -28,9 +28,9 @@ java.net.ConnectException: no available server, currentServerAddr : http://127.0
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
 	at java.lang.Thread.run(Thread.java:748)
-[${project.name}][${env:SERVER_PORT}] 2022-12-22 15:10:28,795 ERROR [com.alibaba.nacos.client.Worker.longPolling.fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791][ServerHttpAgent.java:151] - [NACOS SocketTimeoutException httpPost] currentServerAddr: http://127.0.0.1:8848， err : Read timed out
-[${project.name}][${env:SERVER_PORT}] 2022-12-22 15:10:28,802 ERROR [com.alibaba.nacos.client.Worker.longPolling.fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791][ServerHttpAgent.java:169] - no available server, currentServerAddr : http://127.0.0.1:8848
-[${project.name}][${env:SERVER_PORT}] 2022-12-22 15:10:28,805 ERROR [com.alibaba.nacos.client.Worker.longPolling.fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791][ClientWorker.java:389] - [fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791] [check-update] get changed dataId exception
+[${project.name}][${env:SERVER_PORT}] 2022-12-22 19:57:21,758 ERROR [com.alibaba.nacos.client.Worker.longPolling.fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791][ServerHttpAgent.java:151] - [NACOS SocketTimeoutException httpPost] currentServerAddr: http://127.0.0.1:8848， err : Read timed out
+[${project.name}][${env:SERVER_PORT}] 2022-12-22 19:57:21,767 ERROR [com.alibaba.nacos.client.Worker.longPolling.fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791][ServerHttpAgent.java:169] - no available server, currentServerAddr : http://127.0.0.1:8848
+[${project.name}][${env:SERVER_PORT}] 2022-12-22 19:57:21,769 ERROR [com.alibaba.nacos.client.Worker.longPolling.fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791][ClientWorker.java:389] - [fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791] [check-update] get changed dataId exception
 java.net.ConnectException: no available server, currentServerAddr : http://127.0.0.1:8848
 	at com.alibaba.nacos.client.config.http.ServerHttpAgent.httpPost(ServerHttpAgent.java:170)
 	at com.alibaba.nacos.client.config.http.MetricsHttpAgent.httpPost(MetricsHttpAgent.java:64)
@@ -44,37 +44,7 @@ java.net.ConnectException: no available server, currentServerAddr : http://127.0
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
 	at java.lang.Thread.run(Thread.java:748)
-[${project.name}][${env:SERVER_PORT}] 2022-12-22 15:10:28,823 ERROR [com.alibaba.nacos.client.Worker.longPolling.fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791][ClientWorker.java:550] - longPolling error : 
-java.net.ConnectException: no available server, currentServerAddr : http://127.0.0.1:8848
-	at com.alibaba.nacos.client.config.http.ServerHttpAgent.httpPost(ServerHttpAgent.java:170)
-	at com.alibaba.nacos.client.config.http.MetricsHttpAgent.httpPost(MetricsHttpAgent.java:64)
-	at com.alibaba.nacos.client.config.impl.ClientWorker.checkUpdateConfigStr(ClientWorker.java:377)
-	at com.alibaba.nacos.client.config.impl.ClientWorker.checkUpdateDataIds(ClientWorker.java:352)
-	at com.alibaba.nacos.client.config.impl.ClientWorker$LongPollingRunnable.run(ClientWorker.java:512)
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
-	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
-	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
-	at java.lang.Thread.run(Thread.java:748)
-[${project.name}][${env:SERVER_PORT}] 2022-12-22 15:26:09,149 ERROR [com.alibaba.nacos.client.Worker.longPolling.fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791][ServerHttpAgent.java:151] - [NACOS SocketTimeoutException httpPost] currentServerAddr: http://127.0.0.1:8848， err : Read timed out
-[${project.name}][${env:SERVER_PORT}] 2022-12-22 15:26:09,155 ERROR [com.alibaba.nacos.client.Worker.longPolling.fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791][ServerHttpAgent.java:169] - no available server, currentServerAddr : http://127.0.0.1:8848
-[${project.name}][${env:SERVER_PORT}] 2022-12-22 15:26:09,159 ERROR [com.alibaba.nacos.client.Worker.longPolling.fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791][ClientWorker.java:389] - [fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791] [check-update] get changed dataId exception
-java.net.ConnectException: no available server, currentServerAddr : http://127.0.0.1:8848
-	at com.alibaba.nacos.client.config.http.ServerHttpAgent.httpPost(ServerHttpAgent.java:170)
-	at com.alibaba.nacos.client.config.http.MetricsHttpAgent.httpPost(MetricsHttpAgent.java:64)
-	at com.alibaba.nacos.client.config.impl.ClientWorker.checkUpdateConfigStr(ClientWorker.java:377)
-	at com.alibaba.nacos.client.config.impl.ClientWorker.checkUpdateDataIds(ClientWorker.java:352)
-	at com.alibaba.nacos.client.config.impl.ClientWorker$LongPollingRunnable.run(ClientWorker.java:512)
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
-	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
-	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
-	at java.lang.Thread.run(Thread.java:748)
-[${project.name}][${env:SERVER_PORT}] 2022-12-22 15:26:09,297 ERROR [com.alibaba.nacos.client.Worker.longPolling.fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791][ClientWorker.java:550] - longPolling error : 
+[${project.name}][${env:SERVER_PORT}] 2022-12-22 19:57:21,803 ERROR [com.alibaba.nacos.client.Worker.longPolling.fixed-127.0.0.1_8848-f19d89a0-9ff1-4ff6-a488-036b95f90791][ClientWorker.java:550] - longPolling error : 
 java.net.ConnectException: no available server, currentServerAddr : http://127.0.0.1:8848
 	at com.alibaba.nacos.client.config.http.ServerHttpAgent.httpPost(ServerHttpAgent.java:170)
 	at com.alibaba.nacos.client.config.http.MetricsHttpAgent.httpPost(MetricsHttpAgent.java:64)
