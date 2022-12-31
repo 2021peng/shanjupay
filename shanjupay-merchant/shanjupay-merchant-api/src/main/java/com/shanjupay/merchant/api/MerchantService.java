@@ -2,6 +2,8 @@ package com.shanjupay.merchant.api;
 
 import com.shanjupay.common.domain.BusinessException;
 import com.shanjupay.merchant.api.dto.MerchantDTO;
+import com.shanjupay.merchant.api.dto.StaffDTO;
+import com.shanjupay.merchant.api.dto.StoreDTO;
 
 /**
  * @BelongsProject: shanjupay
@@ -35,4 +37,26 @@ public interface MerchantService {
      * @throws BusinessException
      */
     public void applyMerchant(Long merchantId,MerchantDTO merchantDTO) throws BusinessException;
+
+    /**
+     * @description: 新增门店
+     * @Param storeDTO:
+     * @return: com.shanjupay.merchant.api.dto.StoreDTO
+     */
+    StoreDTO createStore(StoreDTO storeDTO) throws BusinessException;
+
+    /**
+     * 商户新增员工
+     * @param staffDTO
+     */
+    StaffDTO createStaff(StaffDTO staffDTO) throws BusinessException;
+
+    /**
+     * 为门店设置管理员
+     * @param storeId
+     * @param staffId
+     * @throws BusinessException
+     */
+    void bindStaffToStore(Long storeId, Long staffId) throws BusinessException;
+
 }
