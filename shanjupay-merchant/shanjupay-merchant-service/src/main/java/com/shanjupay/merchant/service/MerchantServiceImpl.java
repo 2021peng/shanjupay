@@ -63,11 +63,24 @@ public class MerchantServiceImpl implements MerchantService {
     @Override
     public MerchantDTO queryMerchantById(Long merchantId) {
         Merchant merchant = merchantMapper.selectById(merchantId);
-        MerchantDTO merchantDTO = new MerchantDTO();
-        merchantDTO.setId(merchant.getId());
-        merchantDTO.setMerchantName(merchant.getMerchantName());
+//        MerchantDTO merchantDTO = new MerchantDTO();
+//        merchantDTO.setId(merchant.getId());
+//        merchantDTO.setMerchantName(merchant.getMerchantName());
+
 //设置其它属性...
-        return merchantDTO;
+        return MerchantCovert.INSTANCE.entity2dto(merchant);
+    }
+
+    /**
+     * 查询租户下的商户
+     *
+     * @param tenantId
+     * @return
+     */
+    @Override
+    public MerchantDTO queryMerchantByTenantId(Long tenantId) throws BusinessException {
+        Merchant merchant = merchantMapper.selectOne(new QueryWrapper<Merchant>().lambda().eq(Merchant::getTenantId, tenantId));
+        return MerchantCovert.INSTANCE.entity2dto(merchant);
     }
 
     @Override

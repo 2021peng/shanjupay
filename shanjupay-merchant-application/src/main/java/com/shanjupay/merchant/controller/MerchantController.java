@@ -52,6 +52,14 @@ public class MerchantController {
         return merchantDTO;
     }
 
+    @ApiOperation("获取登录用户的商户信息")
+    @GetMapping(value="/my/merchants")
+    public MerchantDTO getMyMerchantInfo(){
+        Long merchantId = SecurityUtil.getMerchantId();
+        MerchantDTO merchant = merchantService.queryMerchantById(merchantId);
+        return merchant;
+    }
+
     /*
     @ApiOperation("测试")
     @GetMapping(path = "/hello")
@@ -66,7 +74,6 @@ public class MerchantController {
         return "hi,"+name;
     }
      */
-
 
     @ApiOperation("获取手机验证码")
     @ApiImplicitParam(name = "phone", value = "手机号", required = true, dataType = "String",
