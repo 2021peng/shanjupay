@@ -3,8 +3,11 @@ package com.shanjupay.merchant.service;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.shanjupay.common.domain.BusinessException;
 import com.shanjupay.common.domain.CommonErrorCode;
+import com.shanjupay.common.domain.PageVO;
 import com.shanjupay.common.util.PhoneUtil;
 import com.shanjupay.merchant.api.MerchantService;
 import com.shanjupay.merchant.api.dto.MerchantDTO;
@@ -30,6 +33,8 @@ import org.apache.dubbo.config.annotation.Reference;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * @BelongsProject: shanjupay
@@ -271,6 +276,29 @@ public class MerchantServiceImpl implements MerchantService {
         storeStaff.setStoreId(storeId);//门店id
         storeStaff.setStaffId(staffId);//员工id
         storeStaffMapper.insert(storeStaff);
+    }
+
+    /**
+     * 分页条件查询商户下门店
+     * @param storeDTO 商户id
+     * @param pageNo   页码
+     * @param pageSize 每页的记录数
+     * @return
+     */
+    @Override
+    public PageVO<StoreDTO> queryStoreByPage(StoreDTO storeDTO, Integer pageNo, Integer pageSize) {
+        //创建分页
+        Page<Store> page = new Page<>(pageNo, pageSize);
+        //构造查询条件
+        QueryWrapper<Store> qw = new QueryWrapper();
+        if (null != storeDTO && null != storeDTO.getMerchantId()){
+            qw.lambda().eq(Store::getMerchantId, storeDTO.getMerchantId());
+        }
+        //执行查询
+        IPage<Store> storeIPage = storeMapper.selectPage(page, qw);
+        //entity List转DTO List
+        List<StoreDTO> storeList = StoreConvert.INSTANCE.listentity2dto(storeIPage.getRecords());
+        return new PageVO<>(storeList, storeIPage.getTotal(), pageNo, pageSize);
     }
 
     /**

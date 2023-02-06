@@ -5,6 +5,9 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -16,6 +19,8 @@ public class StoreDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @ApiModelProperty("门店Id")
+    @JsonSerialize(using = ToStringSerializer.class)//进行jason转换的时候，自动转成string类型
     private Long id;
 
     @ApiModelProperty(value = "门店名称")
