@@ -76,4 +76,13 @@ public interface MerchantService {
      */
     PageVO<StoreDTO> queryStoreByPage(StoreDTO storeDTO, Integer pageNo, Integer pageSize);
 
+    /**
+     * 查询门店是否属于某商户
+     * @param storeId
+     * @param merchantId
+     * @return
+     */
+    Boolean queryStoreInMerchant(Long storeId, Long merchantId);
+
+
 }

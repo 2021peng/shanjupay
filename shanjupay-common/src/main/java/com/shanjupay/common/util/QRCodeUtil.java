@@ -30,7 +30,7 @@ public class QRCodeUtil {
 	 * @param height 二维码图片的宽度
 	 * @return
 	 */
-	public String createQRCode(String content, int width, int height) throws IOException {
+	public static String createQRCode(String content, int width, int height) throws IOException {
 		String resultImage = "";
 		//除了尺寸，传入内容不能为空
 		if (!StringUtils.isEmpty(content)) {

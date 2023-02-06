@@ -302,6 +302,20 @@ public class MerchantServiceImpl implements MerchantService {
     }
 
     /**
+     * 查询门店是否属于某商户
+     *
+     * @param storeId
+     * @param merchantId
+     * @return
+     */
+    @Override
+    public Boolean queryStoreInMerchant(Long storeId, Long merchantId) {
+        Integer count = storeMapper.selectCount(new LambdaQueryWrapper<Store>()
+        .eq(Store::getId, storeId).eq(Store::getMerchantId, merchantId));
+        return count>0;
+    }
+
+    /**
      * 根据手机号判断员工是否已在指定商户存在
      * @param mobile 手机号
      * @return

@@ -1,5 +1,6 @@
 package com.shanjupay.merchant.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.shanjupay.common.domain.BusinessException;
 import com.shanjupay.common.domain.CommonErrorCode;
@@ -96,6 +97,20 @@ public class AppServiceImpl implements AppService {
     public AppDTO getAppById(String id) throws BusinessException {
         App app = appMapper.selectOne(new QueryWrapper<App>().lambda().eq(App::getAppId, id));
         return AppCovert.INSTANCE.entity2dto(app);
+    }
+
+    /**
+     * 查询应用是否属于某个商户
+     *
+     * @param appId
+     * @param merchantId
+     * @return true表示存在，false表示不存在
+     */
+    @Override
+    public Boolean queryAppInMerchant(String appId, Long merchantId) {
+        Integer count = appMapper.selectCount(new LambdaQueryWrapper<App>()
+        .eq(App::getAppId, appId).eq(App::getMerchantId, merchantId));
+        return count>0;
     }
 
     /**

@@ -10,6 +10,7 @@ import java.io.Serializable;
 @Data
 public class PayOrderDTO implements Serializable {
 
+    private Long merchantId;//商户id
     private Long storeId;//商户下门店，如果未指定，默认是根门店
     private String appId;//此处使用业务id，服务内部使用主键id，服务与服务之间用业务id--appId
     private String channel;//聚合支付的渠道 此处使用渠道编码

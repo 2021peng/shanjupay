@@ -32,4 +32,12 @@ public interface AppService {
      * @return
      */
     AppDTO getAppById(String id) throws BusinessException;
+
+    /**
+     * 查询应用是否属于某个商户
+     * @param appId
+     * @param merchantId
+     * @return
+     */
+    Boolean queryAppInMerchant(String appId, Long merchantId);
 }
