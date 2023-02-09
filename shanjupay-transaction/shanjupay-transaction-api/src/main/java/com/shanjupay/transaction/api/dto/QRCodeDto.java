@@ -3,6 +3,8 @@ package com.shanjupay.transaction.api.dto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @Author: admin
  * @Date: 2023/2/6 19:03
@@ -11,7 +13,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class QRCodeDto {
+public class QRCodeDto implements Serializable {
     private Long merchantId;
     private String appId;
     private Long storeId;

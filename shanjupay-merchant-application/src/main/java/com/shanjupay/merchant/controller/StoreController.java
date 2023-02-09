@@ -70,7 +70,7 @@ public class StoreController {
             @ApiImplicitParam(name = "storeId", value = "商户门店id", required = true, dataType = "String", paramType = "path"),
     })
     @GetMapping(value = "/my/apps/{appId}/stores/{storeId}/app-store-qrcode")
-    public String createCScanBStoreQRCode(@PathVariable String appId, @PathVariable Long storeId) throws BusinessException {
+    public String createCScanBStoreQRCode(@PathVariable("appId") String appId, @PathVariable("storeId") Long storeId) throws BusinessException {
         //商户id
         Long merchantId = SecurityUtil.getMerchantId();
         //生成二维码链接
