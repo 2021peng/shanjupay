@@ -7,18 +7,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="shanjupay-transaction-service" />
-        <module name="shanjupay-uaa-api" />
-        <module name="shanjupay-gateway-service" />
-        <module name="shanjupay-common" />
-        <module name="shanjupay-user-service" />
+        <module name="shanjupay-payment-agent-api" />
         <module name="shanjupay-transaction-api" />
-        <module name="shanjupay-user-api" />
+        <module name="shanjupay-user-service" />
         <module name="shanjupay-merchant-api" />
-        <module name="test-freemarker" />
+        <module name="shanjupay-transaction-service" />
         <module name="shanjupay-uaa-service" />
-        <module name="shanjupay-merchant-service" />
+        <module name="shanjupay-uaa-api" />
+        <module name="shanjupay-payment-agent-service" />
+        <module name="shanjupay-gateway-service" />
         <module name="shanjupay-merchant-application" />
+        <module name="shanjupay-user-api" />
+        <module name="shanjupay-merchant-service" />
+        <module name="shanjupay-common" />
+        <module name="test-freemarker" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -30,6 +32,9 @@
       <module name="shanjupay-merchant-api" target="1.8" />
       <module name="shanjupay-merchant-application" target="1.8" />
       <module name="shanjupay-merchant-service" target="1.8" />
+      <module name="shanjupay-payment-agent" target="1.8" />
+      <module name="shanjupay-payment-agent-api" target="1.8" />
+      <module name="shanjupay-payment-agent-service" target="1.8" />
       <module name="shanjupay-transaction" target="1.8" />
       <module name="shanjupay-transaction-api" target="1.8" />
       <module name="shanjupay-transaction-service" target="1.8" />
@@ -49,6 +54,8 @@
       <module name="shanjupay-merchant-api" options="-parameters" />
       <module name="shanjupay-merchant-application" options="-parameters" />
       <module name="shanjupay-merchant-service" options="-parameters" />
+      <module name="shanjupay-payment-agent-api" options="-parameters -bootclasspath D:/JDK1.8.0_131/jre/lib/rt.jar;D:/JDK1.8.0_131/jre/lib/jce.jar" />
+      <module name="shanjupay-payment-agent-service" options="-parameters" />
       <module name="shanjupay-transaction-api" options="-parameters -bootclasspath D:/JDK1.8.0_131/jre/lib/rt.jar;D:/JDK1.8.0_131/jre/lib/jce.jar" />
       <module name="shanjupay-transaction-service" options="-parameters" />
       <module name="shanjupay-uaa-api" options="-parameters -bootclasspath D:/JDK1.8.0_131/jre/lib/rt.jar;D:/JDK1.8.0_131/jre/lib/jce.jar" />
