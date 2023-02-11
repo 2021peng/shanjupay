@@ -9,4 +9,4 @@ redis：3.2.1：
 七牛云：存储文件
 mysql8.0+(sqlyog)：
 
-idea：商户平台应用程序(MerchantApplicationBootstrap)；商户程序(MerchantBootstrap)；交易程序(TransactionBootstrap)
+idea2019.3
